@@ -1,28 +1,35 @@
-/**
- *
- * App.js
- *
- * This component is the skeleton around the actual pages, and should only
- * contain code that should be seen on all pages. (e.g. navigation bar)
- *
- */
-
 import React from 'react';
+import { Helmet } from 'react-helmet';
+import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
-import GlobalStyle from '../../global-styles';
+import { GlobalStyle } from '../../global-styles';
+
+const AppWrapper = styled.div`
+  position: fixed;
+  overflow-x: hidden;
+  min-width: 100%;
+  min-height: 100%;
+  margin: none;
+  padding: none;
+`;
 
 export default function App() {
   return (
-    <div>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route component={NotFoundPage} />
-      </Switch>
+    <>
+      <AppWrapper>
+        <Helmet titleTemplate="asdf" defaultTitle="asdf">
+          <meta name="asdf" content="asdf" />
+        </Helmet>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </AppWrapper>
       <GlobalStyle />
-    </div>
+    </>
   );
 }
